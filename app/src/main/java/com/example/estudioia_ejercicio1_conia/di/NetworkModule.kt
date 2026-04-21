@@ -1,5 +1,6 @@
 package com.example.estudioia_ejercicio1_conia.di
 
+import com.example.estudioia_ejercicio1_conia.data.Nerwork.PokemonApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,10 +15,18 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun Retrofit():Retrofit{
+    fun provideRetrofit():Retrofit{
         return Retrofit.Builder()
             .baseUrl("https://pokeapi.co/api/v2")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
+
+    @Provides
+    @Singleton
+    fun providePokemonApiService(retrofit: Retrofit): PokemonApiService{
+        return retrofit.create(PokemonApiService::class.java)
+    }
+
+
 }
