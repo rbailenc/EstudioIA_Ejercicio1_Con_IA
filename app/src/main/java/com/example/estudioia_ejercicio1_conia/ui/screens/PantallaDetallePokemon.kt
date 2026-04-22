@@ -9,9 +9,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.animation.core.*
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Brush
@@ -35,7 +37,7 @@ fun PantallaDetallePokemon(
 
     val state by viewModel.uiState.collectAsState()
 
-    when (state) {
+    when (val status = state) {
 
         is PokemonDetailUiState.Loading -> {
             Box(
@@ -48,14 +50,14 @@ fun PantallaDetallePokemon(
 
         is PokemonDetailUiState.Error -> {
             Text(
-                text = (state as PokemonDetailUiState.Error).message,
+                text = status.message,
                 modifier = Modifier.padding(16.dp)
             )
         }
 
         is PokemonDetailUiState.Success -> {
 
-            val detail = (state as PokemonDetailUiState.Success).data
+            val detail = status.data
 
             Column(
                 modifier = Modifier
@@ -179,8 +181,12 @@ fun PantallaDetallePokemon(
                     )
                 ) {
 
+                    val scrollState = rememberScrollState()
+
                     Column(
-                        modifier = Modifier.padding(20.dp)
+                        modifier = Modifier
+                            .padding(20.dp)
+                            .verticalScroll(scrollState)
                     ) {
 
                         Text(
@@ -229,17 +235,19 @@ fun PantallaDetallePokemon(
                             }
                         }
 
-                        Spacer(modifier = Modifier.height(24.dp))
+                        Spacer(modifier = Modifier.height(32.dp))
 
                         Button(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(50.dp),
                             onClick = { navController.popBackStack() },
-                            modifier = Modifier.align(Alignment.End),
                             colors = ButtonDefaults.buttonColors(
                                 containerColor = Color.Red,
                                 contentColor = Color.White
                             )
                         ) {
-                            Text("Volver")
+                            Text("VOLVER")
                         }
                     }
                 }
