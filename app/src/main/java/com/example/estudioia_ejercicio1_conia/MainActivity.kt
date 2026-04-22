@@ -20,14 +20,14 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             EstudioIAEjercicio1ConIATheme {
-                NavController()
+                AppNavigation()
             }
         }
     }
 }
 
 @Composable
-fun NavController(){
+fun AppNavigation(){
     val navController = rememberNavController()
 
     NavHost(
@@ -39,7 +39,7 @@ fun NavController(){
             PantallaInicio(navController)
         }
 
-        composable("detail") {
+        composable("detalle") {
             PantallaDetallePokemon(navController)
         }
     }

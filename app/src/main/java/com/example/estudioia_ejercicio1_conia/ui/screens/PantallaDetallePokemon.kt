@@ -1,8 +1,8 @@
 package com.example.estudioia_ejercicio1_conia.ui.screens
 
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.material3.Button
@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 
 @Composable
-fun PantallaInicio(
+fun PantallaDetallePokemon(
     navController: NavController
 ){
     Column(
@@ -26,10 +26,13 @@ fun PantallaInicio(
                 .fillMaxWidth()
                 .height(50.dp),
             onClick =  {
-                navController.navigate("detalle")
+                navController.popBackStack()
             }
         ) {
-            Text(text = "Ir a pantalla detalle")
+            Text(text = "volver")
         }
     }
 }
+
+
+
