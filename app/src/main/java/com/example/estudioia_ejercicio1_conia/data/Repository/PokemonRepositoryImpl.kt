@@ -41,7 +41,10 @@ class PokemonRepositoryImpl @Inject constructor(
             name = pokemonDto.name,
             description = description,
             imageUrl = pokemonDto.sprites.frontDefault,
-            abilities = abilitiesNames
+            abilities = abilitiesNames,
+            height = pokemonDto.height,
+            weight = pokemonDto.weight,
+            types = pokemonDto.types.map { it.type.name }
         )
     }
 

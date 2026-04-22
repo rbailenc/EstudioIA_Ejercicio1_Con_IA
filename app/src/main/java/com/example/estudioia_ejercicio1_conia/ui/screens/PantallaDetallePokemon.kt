@@ -206,6 +206,73 @@ fun PantallaDetallePokemon(
                         Spacer(modifier = Modifier.height(24.dp))
 
                         Text(
+                            text = "Altura",
+                            style = MaterialTheme.typography.titleMedium,
+                            color = Color.Red
+                        )
+
+                        Spacer(modifier = Modifier.height(8.dp))
+
+                        Text(
+                            text = "${detail.height / 10.0} m",
+                            style = MaterialTheme.typography.bodyLarge,
+                            color = Color.White
+                        )
+
+                        Spacer(modifier = Modifier.height(16.dp))
+
+                        Text(
+                            text = "Peso",
+                            style = MaterialTheme.typography.titleMedium,
+                            color = Color.Red
+                        )
+
+                        Spacer(modifier = Modifier.height(8.dp))
+
+                        Text(
+                            text = "${detail.weight / 10.0} kg",
+                            style = MaterialTheme.typography.bodyLarge,
+                            color = Color.White
+                        )
+
+                        Spacer(modifier = Modifier.height(16.dp))
+
+                        Text(
+                            text = "Tipos",
+                            style = MaterialTheme.typography.titleMedium,
+                            color = Color.Red
+                        )
+
+                        Spacer(modifier = Modifier.height(12.dp))
+
+                        Row(
+                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
+                            detail.types.forEach { type ->
+                                Surface(
+                                    shape = RoundedCornerShape(20.dp),
+                                    color = Color.Black,
+                                    modifier = Modifier.border(
+                                        2.dp,
+                                        Color.Red,
+                                        RoundedCornerShape(20.dp)
+                                    )
+                                ) {
+                                    Text(
+                                        text = type.replaceFirstChar { it.uppercase() },
+                                        color = Color.White,
+                                        modifier = Modifier.padding(
+                                            horizontal = 12.dp,
+                                            vertical = 6.dp
+                                        )
+                                    )
+                                }
+                            }
+                        }
+
+                        Spacer(modifier = Modifier.height(24.dp))
+
+                        Text(
                             text = "Habilidades",
                             style = MaterialTheme.typography.titleMedium,
                             color = Color.Red
