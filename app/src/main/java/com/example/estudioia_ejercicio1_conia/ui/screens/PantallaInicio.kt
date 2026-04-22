@@ -2,6 +2,7 @@ package com.example.estudioia_ejercicio1_conia.ui.screens
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
@@ -65,23 +66,38 @@ fun PantallaInicio(
                     }
                 }
 
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(16.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
+                if (viewModel.esPrimeraPagina()){
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp),
+                        horizontalArrangement = Arrangement.End
+                    ) {
 
-                    if (!viewModel.esPrimeraPagina()) {
+                        Button(onClick = { viewModel.siguientePagina() }) {
+                            Text("Siguiente")
+                        }
+                    }
+                }else{
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp),
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+
                         Button(onClick = { viewModel.paginaAnterior() }) {
                             Text("Anterior")
                         }
-                    }
 
-                    Button(onClick = { viewModel.siguientePagina() }) {
-                        Text("Siguiente")
+                        Button(onClick = { viewModel.siguientePagina() }) {
+                            Text("Siguiente")
+                        }
                     }
                 }
+                Spacer(modifier = Modifier
+                    .fillMaxWidth()
+                    .height(15.dp))
             }
         }
     }
