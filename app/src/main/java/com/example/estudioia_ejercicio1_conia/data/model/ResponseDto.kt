@@ -1,8 +1,10 @@
 package com.example.estudioia_ejercicio1_conia.data.model
 
+import com.google.gson.annotations.SerializedName
+
 data class ResponseDto(
-    val count: Int,
-    val netxt: String,
-    val previous: String,
-    val result: List<PokemonDto>
+    @SerializedName("count") val count: Int,
+    @SerializedName("next") val next: String?,
+    @SerializedName("previous") val previous: String?,
+    @SerializedName("results") val results: List<PokemonDto>
 )

@@ -15,18 +15,16 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideRetrofit():Retrofit{
+    fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://pokeapi.co/api/v2")
+            .baseUrl("https://pokeapi.co/api/v2/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
 
     @Provides
     @Singleton
-    fun providePokemonApiService(retrofit: Retrofit): PokemonApiService{
+    fun providePokemonApiService(retrofit: Retrofit): PokemonApiService {
         return retrofit.create(PokemonApiService::class.java)
     }
-
-
 }

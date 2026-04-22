@@ -15,6 +15,6 @@ class PokemonRepositoryImpl @Inject constructor(
         offset: Int
     ): List<Pokemon> {
         val response = api.getPokemons(limit, offset)
-        return response.result.toDomainList()
+        return response.results.toDomainList()
     }
 }
