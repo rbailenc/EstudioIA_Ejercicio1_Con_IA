@@ -3,6 +3,7 @@ package com.example.estudioia_ejercicio1_conia.ui.screens
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.Arrangement
+import coil.compose.AsyncImage
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
@@ -53,15 +54,31 @@ fun PantallaInicio(
                     modifier = Modifier.weight(1f)
                 ) {
                     items(pokemons) { pokemon ->
-                        Text(
-                            text = pokemon.name,
+                        Row(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .clickable {
-                                    navController.navigate("detalle/${pokemon.name}")
+                                    navController.navigate("detalle/${pokemon.id}")
                                 }
-                                .padding(16.dp)
-                        )
+                                .padding(16.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+
+                            Text(
+                                text = "#${pokemon.id}",
+                                modifier = Modifier.width(50.dp)
+                            )
+
+                            AsyncImage(
+                                model = pokemon.imageUrl,
+                                contentDescription = pokemon.name,
+                                modifier = Modifier.size(48.dp)
+                            )
+
+                            Spacer(modifier = Modifier.width(12.dp))
+
+                            Text(text = pokemon.name)
+                        }
                         HorizontalDivider()
                     }
                 }

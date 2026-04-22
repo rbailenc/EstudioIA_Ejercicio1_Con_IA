@@ -29,7 +29,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun AppNavigation(){
+fun AppNavigation() {
     val navController = rememberNavController()
 
     NavHost(
@@ -42,19 +42,18 @@ fun AppNavigation(){
         }
 
         composable(
-            route = "detalle/{pokemonName}",
+            route = "detalle/{id}",
             arguments = listOf(
-                navArgument("pokemonName") {
-                    type = NavType.StringType
+                navArgument("id") {
+                    type = NavType.IntType
                 }
             )
         ) { backStackEntry ->
-            val pokemonName = backStackEntry.arguments?.getString("pokemonName") ?: ""
+            val pokemonId = backStackEntry.arguments?.getInt("id") ?: 0
             PantallaDetallePokemon(
                 navController = navController,
-                pokemonName = pokemonName
+                pokemonId = pokemonId
             )
         }
     }
-
 }
