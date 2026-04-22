@@ -17,17 +17,24 @@ sealed class PokemonUiState {
 }
 
 class PantallaPrincipalViewmodel @Inject constructor(
-    private val getPokemonUseCase: GetPokemonUseCase
+    private val getPokemonUseCase: GetPokemonUseCase,
 ) : ViewModel() {
+
+    private val pageSize = 20
+    private var currentOffset = 0
 
     private val _uiState = MutableStateFlow<PokemonUiState>(PokemonUiState.Loading)
     val uiState: StateFlow<PokemonUiState> = _uiState.asStateFlow()
 
-    fun cargarPokemons(limit: Int = 20, offset: Int = 0) {
+    init {
+        cargarPokemons()
+    }
+
+    fun cargarPokemons() {
         viewModelScope.launch {
             _uiState.value = PokemonUiState.Loading
             try {
-                val pokemons = getPokemonUseCase(limit, offset)
+                val pokemons = getPokemonUseCase(pageSize, currentOffset)
                 _uiState.value = PokemonUiState.Success(pokemons)
             } catch (e: Exception) {
                 _uiState.value = PokemonUiState.Error(
@@ -36,4 +43,18 @@ class PantallaPrincipalViewmodel @Inject constructor(
             }
         }
     }
+
+    fun siguientePagina() {
+        currentOffset += pageSize
+        cargarPokemons()
+    }
+
+    fun paginaAnterior() {
+        if (currentOffset >= pageSize) {
+            currentOffset -= pageSize
+            cargarPokemons()
+        }
+    }
+
+    fun esPrimeraPagina(): Boolean = currentOffset == 0
 }
