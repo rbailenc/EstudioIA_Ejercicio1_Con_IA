@@ -26,7 +26,7 @@ fun PantallaInicio(
 
     Column(modifier = Modifier.fillMaxSize()) {
 
-        when (uiState) {
+        when (val state = uiState) {
 
             is PokemonUiState.Loading -> {
                 Box(
@@ -39,14 +39,14 @@ fun PantallaInicio(
 
             is PokemonUiState.Error -> {
                 Text(
-                    text = (uiState as PokemonUiState.Error).message,
+                    text = state.message,
                     modifier = Modifier.padding(16.dp)
                 )
             }
 
             is PokemonUiState.Success -> {
 
-                val pokemons = (uiState as PokemonUiState.Success).data
+                val pokemons = state.data
 
                 LazyColumn(
                     modifier = Modifier.weight(1f)
@@ -61,7 +61,7 @@ fun PantallaInicio(
                                 }
                                 .padding(16.dp)
                         )
-                        Divider()
+                        HorizontalDivider()
                     }
                 }
 

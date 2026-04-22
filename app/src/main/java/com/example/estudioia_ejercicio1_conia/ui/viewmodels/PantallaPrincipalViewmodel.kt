@@ -4,7 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.estudioia_ejercicio1_conia.domain.model.Pokemon
 import com.example.estudioia_ejercicio1_conia.domain.usecase.GetPokemonUseCase
-import jakarta.inject.Inject
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -16,6 +17,7 @@ sealed class PokemonUiState {
     data class Error(val message: String) : PokemonUiState()
 }
 
+@HiltViewModel
 class PantallaPrincipalViewmodel @Inject constructor(
     private val getPokemonUseCase: GetPokemonUseCase,
 ) : ViewModel() {
