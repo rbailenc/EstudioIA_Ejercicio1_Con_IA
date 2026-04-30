@@ -252,47 +252,15 @@ ViewModels:
 
 ---
 
-# Objetivos Académicos
+# Video
+Se encuentra en el propio proyecto
 
-Este proyecto demuestra:
 
-- Correcta separación de capas
-- Uso de patrones modernos en Android
-- Consumo de API REST
-- Arquitectura escalable
-- Código mantenible y testeable
 
----
-
-# Video Demostración
-
-A continuación podrás visualizar el funcionamiento completo de la aplicación.
-
-## Enlace al video:
-
-Pega aquí el enlace de tu video de demostración.
-
-Ejemplo:
-
-```
-https://www.youtube.com/watch?v=TU_VIDEO_ID
-```
-
-También puedes usar formato miniatura:
-
-```markdown
-[![Ver demostración](https://img.youtube.com/vi/TU_VIDEO_ID/0.jpg)]
-(https://www.youtube.com/watch?v=TU_VIDEO_ID)
-```
-
----
 
 # Autor
 
 Proyecto desarrollado por rbailenc.
 
----
 
-# Licencia
 
-Proyecto con fines académicos y educativos.
