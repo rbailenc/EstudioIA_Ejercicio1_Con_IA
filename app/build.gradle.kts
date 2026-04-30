@@ -67,6 +67,7 @@ dependencies {
     // Hilt
     implementation("com.google.dagger:hilt-android:2.52")
     kapt("com.google.dagger:hilt-compiler:2.52")
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
 
     //viewModel Compose
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.0")
@@ -76,5 +77,8 @@ dependencies {
 
     //NavController
     implementation("androidx.navigation:navigation-compose:2.7.7")
+
+    // Coil (images)
+    implementation("io.coil-kt:coil-compose:2.6.0")
 
 }
